@@ -70,9 +70,13 @@
 # Delete existing data, so you'll start fresh each time this script is run.
 # Use `Model.destroy_all` code.
 # TODO!
-
+Model.destory_all
 # Generate models and tables, according to the domain model.
 # TODO!
+# rails generate model Studio
+# rails generate model Movie
+# rails generate model Actor
+# rails generate model Role
 
 # Insert data into the database that reflects the sample data shown above.
 # Do not use hard-coded foreign key IDs.
