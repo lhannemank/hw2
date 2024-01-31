@@ -288,11 +288,44 @@ puts ""
 # Query the movies data and loop through the results to display the movies output.
 # TODO!
 
+# Batman Begins          2005           PG-13  Warner Bros.
+# The Dark Knight        2008           PG-13  Warner Bros.
+# The Dark Knight Rises  2012           PG-13  Warner Bros.
+
+movies = Movie.all
+for film in movies
+    film_title = film["title"]
+    film_year = film["year_released"]
+    film_rating = film["rated"]
+    film_studio = Studio.find_by({"id" => film["studio_id"]})
+    film_studio_name = film_studio["name"]
+    # I originally just used this puts statement:
+    # puts "#{film_title}  #{film_year}    #{film_rating} #{film_studio_name}"
+    # but I wanted it to be in columns, 
+    # so I asked ChatGPT how to make it in columns, and it suggested the printf function
+    printf("%-25s %-8s %-8s %s\n", film_title, film_year, film_rating, film_studio_name)
+    
+end
+
 # Prints a header for the cast output
 puts ""
 puts "Top Cast"
 puts "========"
 puts ""
 
+# Batman Begins          Christian Bale        Bruce Wayne
+
 # Query the cast data and loop through the results to display the cast output for each movie.
 # TODO!
+roles = Role.all
+for character in roles
+    movie_title = Movie.find_by({"id" => character["movie_id"]})["title"]
+    actor_name = Actor.find_by({"id" => character["actor_id"]})["name"]
+    role_name = character["character_name"]
+    # I originally just used this puts statement:
+    # puts "#{film_title}  #{film_year}    #{film_rating} #{film_studio_name}"
+    # but I wanted it to be in columns, 
+    # so I asked ChatGPT how to make it in columns, and it suggested the printf function
+    printf("%-25s %-25s %s\n", movie_title, actor_name, role_name)
+    
+end
