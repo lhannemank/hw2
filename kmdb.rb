@@ -322,8 +322,7 @@ for character in roles
     movie_title = Movie.find_by({"id" => character["movie_id"]})["title"]
     actor_name = Actor.find_by({"id" => character["actor_id"]})["name"]
     role_name = character["character_name"]
-    # I originally just used this puts statement:
-    # puts "#{film_title}  #{film_year}    #{film_rating} #{film_studio_name}"
+    # I originally just used a puts statement,
     # but I wanted it to be in columns, 
     # so I asked ChatGPT how to make it in columns, and it suggested the printf function
     printf("%-25s %-25s %s\n", movie_title, actor_name, role_name)
